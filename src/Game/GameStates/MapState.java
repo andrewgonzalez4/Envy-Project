@@ -65,8 +65,12 @@ public class MapState extends State {
                 handler.getGame().pauseState.lastState = State.getState();
 				GameSetUp.SWITCHING=true;
 				State.setState(handler.getGame().pauseState);
-            } else {
-
+            }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
+            	GameSetUp.DEBUGMODE= !GameSetUp.DEBUGMODE;
+            }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
+            	this.entityManager.getPlayer().setHealth(this.entityManager.getPlayer().getMaxHealth());
+            	this.entityManager.getPlayer().setMana(this.entityManager.getPlayer().getMaxMana());
+            }else {
                 worldManager.tick();
                 entityManager.tick();
             }

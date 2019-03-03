@@ -128,9 +128,14 @@ public class FightState extends InWorldState{
             GameSetUp.SWITCHING=true;
             State.setState(handler.getGame().pauseState);
         }
+        ///CODE TO DEBUG MODE///
+        else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
+        	GameSetUp.DEBUGMODE= !GameSetUp.DEBUGMODE;
+        }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
+        	this.entityManager.getPlayer().setHealth(this.entityManager.getPlayer().getMaxHealth());
+        	this.entityManager.getPlayer().setMana(this.entityManager.getPlayer().getMaxMana());
         /////////////////////////////
-
-        else {
+        }else {
             if(!attacking&&!defense&&!skill&&turn>0&&enemy.getHealth()<=0&&!battleOver){
                 battleOver=true;
                 

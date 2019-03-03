@@ -38,12 +38,18 @@ public class InWorldState extends State{
             if (currentArea != null) {
                 currentArea.tick();
             }
+
             GameSetUp.loadCounter++;
         }else {
             if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
                 handler.getGame().pauseState.lastState = State.getState();
                 GameSetUp.SWITCHING=true;
                 State.setState(handler.getGame().pauseState);
+            }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
+            	GameSetUp.DEBUGMODE= !GameSetUp.DEBUGMODE;
+            }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
+            	this.entityManager.getPlayer().setHealth(this.entityManager.getPlayer().getMaxHealth());
+            	this.entityManager.getPlayer().setMana(this.entityManager.getPlayer().getMaxMana());
             }else {
                 if (currentArea != null) {
                     currentArea.tick();
