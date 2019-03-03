@@ -128,7 +128,7 @@ public class FightState extends InWorldState{
             GameSetUp.SWITCHING=true;
             State.setState(handler.getGame().pauseState);
         }
-        ///CODE TO DEBUG MODE///
+        ///CODE TO DEBUG MODE/// 
         else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_F7)) {
         	GameSetUp.DEBUGMODE= !GameSetUp.DEBUGMODE;
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
