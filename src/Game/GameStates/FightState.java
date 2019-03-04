@@ -190,15 +190,15 @@ public class FightState extends InWorldState{
         }
         if (turn == 0) {
             if(skill && handler.getEntityManager().getPlayer().getMana()>=25){
-                callSkill(g);
+            	callSkill(g);              
             }else if (attacking) {
                 attack(g);
             } else if (defense) {
                 defend(g);
             }
         }else if (turn > 0){
-            if(Eskill && enemy.getMana()>=25){
-                EcallSkill(g);
+            if(Eskill && enemy.getMana()>=25){           	
+           		EcallSkill(g);
             }else if(Eattacking){
                 Eattack(g);
             }else if(Edefense){
@@ -503,11 +503,18 @@ public class FightState extends InWorldState{
         uiManager.addObjects(new UIImageButton(handler.getWidth() * 38/60 - 128/2, 5*handler.getHeight()/6, 128, 64, Images.Skill, new ClickListlener() {
             @Override
             public void onClick() {
-                if(handler.getEntityManager().getPlayer().getMana()>=25) {
+                if(handler.getEntityManager().getPlayer().getMana()>=25
+                		///To disrupt the skill button here!!!!
+                //&& handler.getEntityManager().getPlayer().getLvl() >1
+                ){
                     System.out.println("Skill");
+                    //handler.getEntityManager().getPlayer().setSkill("Freeze");
                     skill = true;
                 }
-
+                //else {
+                	//handler.getEntityManager().getPlayer().setSkill("None");
+                	//skill = false;
+                //}
             }
         }));
 
