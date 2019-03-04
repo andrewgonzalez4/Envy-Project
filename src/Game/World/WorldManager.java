@@ -145,8 +145,12 @@ public class WorldManager {
 		
 		///City Entrance
 		worldWalls.add(new Walls(handler, 1150, 520, 75, 75, "Door Town"));
+
 		//System.out.println(this.getWalls().get(2).getType());
 		}
+
+	
+
 
 	public void collidedWithWall() {
 		if(this.handler.getEntityManager().getPlayer().getCollision().intersects(this.rectangle)) {
