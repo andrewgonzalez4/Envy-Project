@@ -120,7 +120,7 @@ public class CaveArea extends BaseArea {
 
 
         caveWalls.add(new InWorldWalls(handler, 1940, 2130, 100, 100, "Wall"));									// Pond next to Statue
-        caveWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                  //Statue
+        caveWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                 // Statue
         caveWalls.add(new InWorldWalls(handler, 3380, 510, 120, 100, "Wall"));									// Hole next to Exit
         caveWalls.add(new InWorldWalls(handler, 2744, 140, 200, 300, "Wall"));									// Left wall relative to Exit
         caveWalls.add(new InWorldWalls(handler, 3288, 140, 200, 300, "Wall"));									// Right wall relative to Exit
