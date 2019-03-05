@@ -48,6 +48,11 @@ public class Images {
 	public static BufferedImage[] player_back;
 	public static BufferedImage player_attack;
 
+	public static SpriteSheet ogreSheet;
+	public static BufferedImage[] ogre_front_stop;
+	public static BufferedImage[] ogre_front_pass;
+	public static Image ScaledOgre_stop[];
+	
 	public static BufferedImage[] PEnemyIdle;
 	public static BufferedImage[] WEnemyIdle;
 
@@ -88,7 +93,9 @@ public class Images {
 	public static BufferedImage[] SItem;
 
 	public static BufferedImage CaveMap;
+	public static BufferedImage TownMap;
 	public static BufferedImage Loading;
+	public static Image ScaledTown;
 	public static Image ScaledCave;
 	public static Image ScaledArea;
 	public static BufferedImage tree;
@@ -117,7 +124,10 @@ public class Images {
 		DefenceMode = new BufferedImage[100];
 		AttackMode = new BufferedImage[100];
 
-
+		ogre_front_stop= new BufferedImage[4];
+		ogre_front_pass= new BufferedImage[3];
+		ScaledOgre_stop = new Image[4];
+		
 		player_front = new BufferedImage[4];
 		player_right = new BufferedImage[4];
 		player_left = new BufferedImage[4];
@@ -158,6 +168,7 @@ public class Images {
 
 
 			CaveMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/CaveMap.png"));
+			TownMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/town.png"));
 			tree = ImageIO.read(getClass().getResourceAsStream("/Sheets/Tree.png"));
 			title = ImageIO.read(getClass().getResourceAsStream("/Sheets/menuImage.png"));
 			title2 = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
@@ -223,6 +234,17 @@ public class Images {
 			PEnemyIdle[5] = PEnemySheet.crop(192, 0, 37, 40);
 			PEnemyIdle[6] = PEnemySheet.crop(233, 0, 37, 40);
 
+			ogreSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/maleorcfullsheet.png")));
+			
+			ogre_front_stop[0] = ogreSheet.crop(15, 144, 34, 47);
+			ogre_front_stop[1] = ogreSheet.crop(79, 144, 34, 47);
+			ogre_front_stop[2] = ogreSheet.crop(204, 144, 39, 47);
+			ogre_front_stop[3] = ogreSheet.crop(262, 142, 52, 49);
+			
+			ogre_front_pass[0] = ogreSheet.crop(16, 141, 34, 47);
+			ogre_front_pass[1] = ogreSheet.crop(16, 208, 34, 47);
+			ogre_front_pass[2] = ogreSheet.crop(274, 466, 34, 47);
+			
 
 			playerSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/player.png")));
 
@@ -719,7 +741,20 @@ public class Images {
 		map[3] = toBufferedImage(Scaledmap[1]);
 		
 		ScaledCave = Images.CaveMap.getScaledInstance(3680, 4000, Image.SCALE_SMOOTH); // 368x400 pixel image
-
+		ScaledTown = Images.TownMap.getScaledInstance(3680, 4000, Image.SCALE_SMOOTH);
+		
+		/*
+		ScaledOgre_stop[0] = Images.ogre_front_stop[0].getScaledInstance(13, 22,Image.SCALE_DEFAULT);
+		ScaledOgre_stop[1] = Images.ogre_front_stop[1].getScaledInstance(13, 22,Image.SCALE_DEFAULT);
+		ScaledOgre_stop[2] = Images.ogre_front_stop[2].getScaledInstance(13, 22,Image.SCALE_DEFAULT);
+		ScaledOgre_stop[3] = Images.ogre_front_stop[3].getScaledInstance(13, 22,Image.SCALE_DEFAULT);
+		
+		ogre_front_stop[0] = toBufferedImage(ScaledOgre_stop[0]);
+		ogre_front_stop[1] = toBufferedImage(ScaledOgre_stop[1]);
+		ogre_front_stop[2] = toBufferedImage(ScaledOgre_stop[2]);
+		ogre_front_stop[3] = toBufferedImage(ScaledOgre_stop[3]);
+		*/
+		
 	}
 
 	

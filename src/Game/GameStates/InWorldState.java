@@ -18,7 +18,7 @@ public class InWorldState extends State{
     public static BaseArea currentArea;
     public static BaseArea caveArea;
     public static BaseArea SArea;
-	public static Object townArea;
+	public static BaseArea townArea;
 
     public InWorldState(Handler handler) {
         super(handler);

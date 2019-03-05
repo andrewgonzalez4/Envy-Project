@@ -231,10 +231,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							State.setState(handler.getGame().inWorldState.setArea(InWorldState.SArea));
 						}
 						
-					/*	if(w.getType().contentEquals("Door Town")) {
+						if(w.getType().contentEquals("Door Town")) {
 							checkInWorld = true;
-							InWorldState.townArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
-							InWorldState.townArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
+//							InWorldState.townArea.oldPlayerXCoord = (int) (handler.getXDisplacement());
+//							InWorldState.townArea.oldPlayerYCoord = (int) (handler.getYDisplacement());
 							TownArea.isInTown = true;
 							setWidthAndHeight(InAreaWidthFrontAndBack, InAreaHeightFront);
 							handler.setXInWorldDisplacement(TownArea.playerXSpawn);
@@ -246,11 +246,12 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	                        handler.getGame().getMusicHandler().play();
 	                        handler.getGame().getMusicHandler().setVolume(0.4);
 							
-							
+	                        State.setState(handler.getGame().inWorldState.setArea(InWorldState.townArea));
+							System.out.println("Enter Town");
 							
 							
 						}
-				    */
+				    
 					}
 
 				}
@@ -288,6 +289,42 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							CaveArea.isInCave = false;
 							checkInWorld = false;
 							System.out.println("Left Cave");
+							setWidthAndHeight(InMapWidthFrontAndBack, InMapHeightFront);
+						}
+					}
+				}
+			}
+			
+			else if (TownArea.isInTown) {
+				for (InWorldWalls iw : TownArea.townWalls) {
+					if (nextArea.intersects(iw)) {
+						if (iw.getType().equals("Wall"))
+							PushPlayerBack();
+						else {
+
+							if (iw.getType().equals("Start Exit") || iw.getType().equals("End Exit")) {
+
+								handler.setXDisplacement(handler.getXDisplacement() - 450); // Sets the player x/y
+																							// outside the
+								handler.setYDisplacement(handler.getYDisplacement() + 400); // Cave
+
+							} /*else if (iw.getType().equals("End Exit")) {
+
+								handler.setXDisplacement(InWorldState.townArea.oldPlayerXCoord);// Sets the player x/y
+								handler.setYDisplacement(InWorldState.townArea.oldPlayerYCoord);// outside theCave
+							}*/
+	
+							GameSetUp.LOADING = true;
+							handler.setArea("None");
+							
+	                    	handler.getGame().getMusicHandler().set_changeMusic("res/music/OverWorld.mp3");
+	                        handler.getGame().getMusicHandler().play();
+	                        handler.getGame().getMusicHandler().setVolume(0.2);
+							
+							State.setState(handler.getGame().mapState);
+							TownArea.isInTown = false;
+							checkInWorld = false;
+							System.out.println("Left Town");
 							setWidthAndHeight(InMapWidthFrontAndBack, InMapHeightFront);
 						}
 					}
