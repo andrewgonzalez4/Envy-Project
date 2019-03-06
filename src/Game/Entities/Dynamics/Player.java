@@ -22,6 +22,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 
 	private Rectangle player;
 	private boolean canMove;
+	
+	public boolean questComplete = false;
+	public boolean questInProgress = false;
+	
 	public static boolean checkInWorld;
 
 	public static final int InMapWidthFrontAndBack = 15 * 3, InMapHeightFront = 27 * 3, InMapHeightBack = 23 * 3,
@@ -196,7 +200,15 @@ public class Player extends BaseDynamicEntity implements Fighter {
 					if (w.getType().equals("Wall")) {
 						PushPlayerBack();
 					}
-
+					else if (w.getType().equals("Ogre Wall")) {
+						if (questComplete ==false) {
+							PushPlayerBack();	
+						}
+						else {
+							//handler.getWorldManager().
+						}
+						
+					}
 					else if (w.getType().startsWith("Door")) {
 						canMove = true;
 
@@ -302,18 +314,30 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							PushPlayerBack();
 						else {
 
-							if (iw.getType().equals("Start Exit") || iw.getType().equals("End Exit")) {
+							if (iw.getType().equals("Start Exit") /*|| iw.getType().equals("End Exit")*/) {
 
-								handler.setXDisplacement(handler.getXDisplacement() - 450); // Sets the player x/y
+								handler.setXDisplacement(handler.getXDisplacement() /*- 450*/); // Sets the player x/y
 																							// outside the
-								handler.setYDisplacement(handler.getYDisplacement() + 400); // Cave
+								handler.setYDisplacement(handler.getYDisplacement() + 100); // Cave
 
-							} /*else if (iw.getType().equals("End Exit")) {
+							} else if (iw.getType().equals("End Exit")) {
 
-								handler.setXDisplacement(InWorldState.townArea.oldPlayerXCoord);// Sets the player x/y
-								handler.setYDisplacement(InWorldState.townArea.oldPlayerYCoord);// outside theCave
-							}*/
-	
+//								handler.setXDisplacement(InWorldState.townArea.oldPlayerXCoord);// Sets the player x/y
+//								handler.setYDisplacement(InWorldState.townArea.oldPlayerYCoord);// outside theCave
+								handler.setXDisplacement(handler.getXDisplacement() /*- 450*/); // Sets the player x/y
+								// outside the
+								handler.setYDisplacement(handler.getYDisplacement() - 50); // Cave
+							}
+							else if (iw.getType().equals("Left Exit")) {
+								handler.setXDisplacement(handler.getXDisplacement() + 100); // Sets the player x/y
+								// outside the
+								handler.setYDisplacement(handler.getYDisplacement() );
+							}
+							else if (iw.getType().equals("Right Exit")) {
+								handler.setXDisplacement(handler.getXDisplacement() - 100); // Sets the player x/y
+								// outside the
+								handler.setYDisplacement(handler.getYDisplacement() );
+							}
 							GameSetUp.LOADING = true;
 							handler.setArea("None");
 							
@@ -441,7 +465,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	double health = 200, mana = 100, xp = 0, lvl = 1, defense = 16, str = 10, intl = 25, mr = 12, cons = 20, acc = 12, evs = 4,
 			initiative = 13, maxHealth = 200, maxMana = 100, lvlUpExp = 200;
 
-	String Class = "none", skill = "Freeze";
+	String Class = "none", skill = "None";
 	String[] buffs = {}, debuffs = {};
 
 	@Override

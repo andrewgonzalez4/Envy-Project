@@ -503,9 +503,9 @@ public class FightState extends InWorldState{
         uiManager.addObjects(new UIImageButton(handler.getWidth() * 38/60 - 128/2, 5*handler.getHeight()/6, 128, 64, Images.Skill, new ClickListlener() {
             @Override
             public void onClick() {
-                if(handler.getEntityManager().getPlayer().getMana()>=25
-                		///To disrupt the skill button here!!!!
-                //&& handler.getEntityManager().getPlayer().getLvl() >1
+            	///To disrupt the skill button here!!!!
+            	if(handler.getEntityManager().getPlayer().getMana()>=25
+                && handler.getEntityManager().getPlayer().getSkill() != "None"
                 ){
                     System.out.println("Skill");
                     //handler.getEntityManager().getPlayer().setSkill("Freeze");

@@ -37,7 +37,7 @@ public class WorldManager {
 		circle = handler.getGame().getMouseManager().new Circle(5627,380, this.handler);
 		this.entityManager.AddEntity(new Tree(handler, 600, 600));
 		this.entityManager.AddEntity(new SmokeHouse(handler, 1153, 335));
-		this.entityManager.AddEntity(new OgreGuardian(handler, 1620, 20));
+		this.entityManager.AddEntity(new OgreGuardian(handler, 1655, 20));
 
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,500, 800,"MapState","Jovan","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,1400, 600,"MapState","Common Rat","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
@@ -148,8 +148,9 @@ public class WorldManager {
 		///City Entrance
 		worldWalls.add(new Walls(handler, 1150, 520, 75, 75, "Door Town"));
 
-		//System.out.println(this.getWalls().get(2).getType());
-		worldWalls.add(new Walls(handler, 1622, 90, 130, 70,"Wall"));
+		//Monster Wall
+		//worldWalls.add(new Walls(handler, 1622, 90, 130, 70,"Wall"));
+		worldWalls.add(new Walls(handler,  1622, 90, 130, 75,"Ogre Wall"));
 		}
 
 	

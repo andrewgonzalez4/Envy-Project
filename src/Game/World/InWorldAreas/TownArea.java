@@ -7,7 +7,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import Game.Entities.EntityManager;
-import Game.Entities.Statics.LightStatue;
+//import Game.Entities.Statics.LightStatue;
+import Game.Entities.Statics.QuestGiver;
 import Game.World.Walls;
 
 public class TownArea extends BaseArea {
@@ -17,8 +18,8 @@ public class TownArea extends BaseArea {
     public static boolean isInTown = false;
 
     private int imageWidth = 3680, imageHeight = 4000;
-    public final static int playerXSpawn = -380, playerYSpawn = -3180
-    		;
+    public final static int playerXSpawn = -880, playerYSpawn = -3180;
+    //1800, 3900,
 
     private Rectangle background = new Rectangle(3000, 3000);
 
@@ -34,7 +35,7 @@ public class TownArea extends BaseArea {
 
         this.entityManager = entityManager;
 
-        
+        this.entityManager.AddEntity(new QuestGiver (handler, 184, 1640));
 
         //this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,700, 2000,"InWorldState","Sergio","Town","EnemyOne",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
         //this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,3000, 1000,"InWorldState","Cave Dweller","Town","EnemyOne",100,25,60,10,1,12,20,10,20,13,1,10,"None","Thunder",null,null)); // lvl 1 difficulty
@@ -91,10 +92,10 @@ public class TownArea extends BaseArea {
 
 
         townWalls.add(new InWorldWalls(handler, 100, 0, 10, imageHeight, "Wall"));								// Left Border
-        townWalls.add(new InWorldWalls(handler, 0, imageHeight-100, imageWidth/3, 50, "Wall"));					// Bottom LeftBorder (Left side relative to Entrance)
-        townWalls.add(new InWorldWalls(handler, imageWidth/2-350, imageHeight-100, imageWidth/4, 50, "Wall"));	// Bottom RightBorder (Right side relative to Entrance)
-        townWalls.add(new InWorldWalls(handler, 0, 130, imageWidth, 10, "Wall"));								//
-        townWalls.add(new InWorldWalls(handler, imageWidth - 130, 0, 10, imageHeight, "Wall"));					// Right Border
+        townWalls.add(new InWorldWalls(handler, 0, imageHeight, imageWidth, 50, "Wall"));					// Bottom LeftBorder (Left side relative to Entrance)
+//        townWalls.add(new InWorldWalls(handler, imageWidth/2-350, imageHeight-100, imageWidth/4, 50, "Wall"));	// Bottom RightBorder (Right side relative to Entrance)
+        townWalls.add(new InWorldWalls(handler, 0, 0, imageWidth, 10, "Wall"));								//
+        townWalls.add(new InWorldWalls(handler, imageWidth , 0, 10, imageHeight, "Wall"));					// Right Border
 
 
         //townWalls.add(new InWorldWalls(handler, 200, 3400, 400, 400, "Wall"));									// Left side Pond
@@ -108,10 +109,10 @@ public class TownArea extends BaseArea {
 //        townWalls.add(new InWorldWalls(handler, 2520, 2750, 800, 1, "Wall"));									//
 //        townWalls.add(new InWorldWalls(handler, 3258, 2608, 400, 400, "Wall"));									//
 
-        townWalls.add(new InWorldWalls(handler, 216, 500, 1030, 1000, "Wall"));									// Lava Lake
-        townWalls.add(new InWorldWalls(handler, 1246, 518, 300, 415, "Wall"));									//
-        townWalls.add(new InWorldWalls(handler, 222, 1428, 1010, 130, "Wall"));									//
-        townWalls.add(new InWorldWalls(handler, 184, 1640, 100, 100, "Wall"));									// Lava Hole
+        townWalls.add(new InWorldWalls(handler, 216, 50, 1005, 1040, "Wall"));									// Lava Lake
+ //       townWalls.add(new InWorldWalls(handler, 1246, 518, 300, 415, "Wall"));									//
+        townWalls.add(new InWorldWalls(handler, 100, 1128, 1110, 115, "Wall"));									//
+ //       townWalls.add(new InWorldWalls(handler, 184, 1640, 100, 100, "Wall"));									// Lava Hole
 
 
 
@@ -119,18 +120,18 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, 661, 205, 120, 100, "Wall"));									// Hole next to TopLeft Side wall with torch
 
 
-        townWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                  //Statue
+//        townWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                  //Statue
 //        townWalls.add(new InWorldWalls(handler, 1940, 2130, 100, 100, "Wall"));									// Pond next to Statue
 //        townWalls.add(new InWorldWalls(handler, 3380, 510, 120, 100, "Wall"));									// Hole next to Exit
-        townWalls.add(new InWorldWalls(handler, 2744, 140, 200, 300, "Wall"));									// Left wall relative to Exit
-        townWalls.add(new InWorldWalls(handler, 3288, 140, 200, 300, "Wall"));									// Right wall relative to Exit
+//        townWalls.add(new InWorldWalls(handler, 2744, 140, 200, 300, "Wall"));									// Left wall relative to Exit
+//        townWalls.add(new InWorldWalls(handler, 3288, 140, 200, 300, "Wall"));									// Right wall relative to Exit
 
-        townWalls.add(new InWorldWalls(handler, imageWidth/3, imageHeight, 300, 50, "Wall"));					// Entrance
+        townWalls.add(new InWorldWalls(handler, /*imageWidth/3*/ 1500, imageHeight, 300, 50, "Wall"));					// Entrance
 
-        townWalls.add(new InWorldWalls(handler, 2950, 340, 320, 100, "Start Exit"));							// Exit at Start
-        townWalls.add(new InWorldWalls(handler, 1230, 3900, 280, 100, "End Exit"));							// Exit at End
-
-
+        townWalls.add(new InWorldWalls(handler, 1700, 0, 280, 100, "Start Exit"));							// Exit at Start
+        townWalls.add(new InWorldWalls(handler, 1730, 3900, 280, 100, "End Exit"));							// Exit at End
+        townWalls.add(new InWorldWalls(handler, 0, 1800, 100, 280, "Left Exit"));
+        townWalls.add(new InWorldWalls(handler, imageWidth - 100, 1800,100, 280, "Right Exit"));
 
     }
 

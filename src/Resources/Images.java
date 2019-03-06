@@ -53,6 +53,9 @@ public class Images {
 	public static BufferedImage[] ogre_front_pass;
 	public static Image ScaledOgre_stop[];
 	
+	public static SpriteSheet questgiverSheet;
+	public static BufferedImage[] questgiver_front;
+	
 	public static BufferedImage[] PEnemyIdle;
 	public static BufferedImage[] WEnemyIdle;
 
@@ -127,6 +130,8 @@ public class Images {
 		ogre_front_stop= new BufferedImage[4];
 		ogre_front_pass= new BufferedImage[3];
 		ScaledOgre_stop = new Image[4];
+		
+		questgiver_front = new BufferedImage[5];
 		
 		player_front = new BufferedImage[4];
 		player_right = new BufferedImage[4];
@@ -234,6 +239,14 @@ public class Images {
 			PEnemyIdle[5] = PEnemySheet.crop(192, 0, 37, 40);
 			PEnemyIdle[6] = PEnemySheet.crop(233, 0, 37, 40);
 
+			questgiverSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/darkmale.png")));
+			
+			questgiver_front[0] = questgiverSheet.crop(15, 142, 34, 48);
+			questgiver_front[1] = questgiverSheet.crop(79, 142, 34, 48);
+			questgiver_front[2] = questgiverSheet.crop(143, 142, 34, 48);
+			questgiver_front[3] = questgiverSheet.crop(207, 142, 34, 48);
+			questgiver_front[4] = questgiverSheet.crop(271, 143, 34, 48);
+			
 			ogreSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/maleorcfullsheet.png")));
 			
 			ogre_front_stop[0] = ogreSheet.crop(15, 144, 34, 47);
