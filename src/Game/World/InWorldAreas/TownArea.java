@@ -39,11 +39,16 @@ public class TownArea extends BaseArea {
 
         this.entityManager = entityManager;
 
+
         
         // 184, 1640
-        this.entityManager.AddEntity(handler.newEnemy(Images.questgiver_front,handler,184, 1640,"InWorldState","Weird Entity","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
+        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,184, 1640,"InWorldState","Weird Entity","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
         
         
+
+        
+    
+
         townWalls = new ArrayList<>();
         AddWalls();
 

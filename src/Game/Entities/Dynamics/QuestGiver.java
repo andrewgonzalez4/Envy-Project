@@ -13,7 +13,7 @@ import Resources.Images;
 import Resources.Animation;
 
 
-public class QuestGiver extends BaseHostileEntity implements Fighter{
+public class QuestGiver extends BaseHostileEntity {
 
     Rectangle questgiver;
     int width, height;
@@ -63,7 +63,7 @@ public class QuestGiver extends BaseHostileEntity implements Fighter{
 
             g2.setColor(Color.black);
 
-            g.drawImage(meditate.getCurrentFrame(),questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
+            g.drawImage(Images.questgiver_front[0],questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
 
             if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
                 handler.getEntityManager().getPlayer().facing = "Left";
