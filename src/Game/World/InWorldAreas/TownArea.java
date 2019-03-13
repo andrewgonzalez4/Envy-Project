@@ -3,12 +3,14 @@ package Game.World.InWorldAreas;
 import Main.GameSetUp;
 import Main.Handler;
 import Resources.Images;
+import Resources.Animation;
 import java.awt.*;
 import java.util.ArrayList;
 
 import Game.Entities.EntityManager;
-//import Game.Entities.Statics.LightStatue;
-import Game.Entities.Statics.QuestGiver;
+//import Game.Entities.Dynamics.QuestGiver;
+import Game.Entities.Dynamics.QuestGiver;
+import Game.Entities.Statics.LightStatue;
 import Game.World.Walls;
 
 public class TownArea extends BaseArea {
@@ -16,12 +18,14 @@ public class TownArea extends BaseArea {
     Rectangle exit;
     Rectangle playerRect;
     public static boolean isInTown = false;
-
+    
     private int imageWidth = 3680, imageHeight = 4000;
     public final static int playerXSpawn = -880, playerYSpawn = -3180;
     //1800, 3900,
 
     private Rectangle background = new Rectangle(3000, 3000);
+    
+    private Animation meditate = new Animation (200, Images.questgiver_front);
 
     public static ArrayList<InWorldWalls> townWalls;
 
@@ -35,10 +39,10 @@ public class TownArea extends BaseArea {
 
         this.entityManager = entityManager;
 
-        this.entityManager.AddEntity(new QuestGiver (handler, 184, 1640));
-
-        //this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,700, 2000,"InWorldState","Sergio","Town","EnemyOne",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
-        //this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,3000, 1000,"InWorldState","Cave Dweller","Town","EnemyOne",100,25,60,10,1,12,20,10,20,13,1,10,"None","Thunder",null,null)); // lvl 1 difficulty
+        
+        // 184, 1640
+        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,184, 1640,"InWorldState","Sergio","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
+        
 
         //this.entityManager.AddEntity(new LightStatue (handler, 2080, 1770));
         
@@ -117,7 +121,7 @@ public class TownArea extends BaseArea {
 
 
         townWalls.add(new InWorldWalls(handler, 176, 140, 455, 345, "Wall"));									// TopLeft Side Wall with torch
-        townWalls.add(new InWorldWalls(handler, 661, 205, 120, 100, "Wall"));									// Hole next to TopLeft Side wall with torch
+       // townWalls.add(new InWorldWalls(handler, 661, 205, 120, 100, "Wall"));									// Hole next to TopLeft Side wall with torch
 
 
 //        townWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                  //Statue

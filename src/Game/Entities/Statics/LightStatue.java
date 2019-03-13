@@ -37,6 +37,7 @@ public class LightStatue extends BaseStaticEntity {
 	public void render(Graphics g) {
 		if(!Player.isinArea)
 			g.drawImage(light.getCurrentFrame(), (int)(handler.getXInWorldDisplacement() + xPosition),(int)( handler.getYInWorldDisplacement() + yPosition), width, height, null);
+		collision = new Rectangle((int)(handler.getXDisplacement() + xPosition + 35), (int)(handler.getYDisplacement() + yPosition + 50), width/4, height/2);
 	}
 
 	@Override
