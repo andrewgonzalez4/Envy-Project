@@ -15,251 +15,250 @@ import Resources.Animation;
 
 public class QuestGiver extends BaseHostileEntity implements Fighter{
 
-    Rectangle questgiver;
-    int width, height;
-    Animation meditate;
-    public QuestGiver(Handler handler, int xPosition, int yPosition, String state, String name, String area, BufferedImage[] animFrames) {
-        super(handler, yPosition, yPosition,state,name,area,animFrames);
-        width = 30;
-        height = 30;
-        speed = 1;
-        type="QuestGiver";
-        this.setXOffset(xPosition);
-        this.setYOffset(yPosition);
+	Rectangle questgiver;
+	int width, height;
+	Animation meditate;
+	public QuestGiver(Handler handler, int xPosition, int yPosition, String state, String name, String area, BufferedImage[] animFrames) {
+		super(handler, yPosition, yPosition,state,name,area,animFrames);
+		width = 30;
+		height = 30;
+		speed = 1;
+		type="QuestGiver";
+		this.setXOffset(xPosition);
+		this.setYOffset(yPosition);
 
-        meditate = new Animation(200, Images.questgiver_front);
-        
-        this.foundState = state;
-        questgiver = new Rectangle();
-    }
+		meditate = new Animation(200, Images.questgiver_front);
 
-    @Override
-    public void tick() {
+		this.foundState = state;
+		questgiver = new Rectangle();
+	}
 
-        if(!Player.isinArea) {
-        	//super.tick();
-        	meditate.tick();
-        }
+	@Override
+	public void tick() {
 
-    }
+		if(!Player.isinArea) {
+			//super.tick();
+			meditate.tick();
+		}
 
-    @Override
-    public void render(Graphics g) {
-        super.render(g);
+	}
 
-        Graphics2D g2 = (Graphics2D) g;
+	@Override
+	public void render(Graphics g) {
+		super.render(g);
 
-
-//        if(handler.getArea().equals(this.Area)) {
-//            if (!Player.checkInWorld) {
-//                questgiver = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
-//                        (int) (handler.getYDisplacement() + getYOffset()), 45, 45);
-//
-//            } else {
-//                questgiver = new Rectangle((int) (handler.getXInWorldDisplacement() + getXOffset()),
-//                        (int) (handler.getYInWorldDisplacement() + getYOffset()), 70, 70);
-//
-//            }
-
-            g2.setColor(Color.black);
-
-            g.drawImage(meditate.getCurrentFrame(),questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
-
-            //if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
-              //  handler.getEntityManager().getPlayer().facing = "Left";
-                //State.setState(new FightState(handler, this, this.Area));
-           // }
-        //}
+		Graphics2D g2 = (Graphics2D) g;
 
 
-    }
+		if(handler.getArea().equals(this.Area)) {
+			if (!Player.checkInWorld) {
+				questgiver = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
+						(int) (handler.getYDisplacement() + getYOffset()), 45, 45);
 
-    @Override
-    public Rectangle getCollision() {
-        return questgiver;
-    }
+			} else {
+				questgiver = new Rectangle((int) (handler.getXInWorldDisplacement() + getXOffset()),
+						(int) (handler.getYInWorldDisplacement() + getYOffset()), 70, 70);
 
-    //GETTERS AND SETTERS FOR FIGHT STATS
+			}
 
-    double health=100,mana=25,xp=0l,lvl=1,defense=12,str=8,intl=20, mr = 10,cons=20,acc=10,evs=2,initiative=10, maxHealth = 100;
-    String Class = "none",skill = "none";
-    String[] buffs = {},debuffs = {};
+			g2.setColor(Color.black);
 
-    @Override
-    public double getMaxHealth() {
-        return maxHealth;
-    }
-    @Override
-    public double getMaxMana() {
-        return 100;
-    }
-    @Override
-    public double getHealth() {
-        return health;
-    }
+			g.drawImage(Images.questgiver_front[0],questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
 
-    @Override
-    public void setHealth(double health) {
-        this.health=health;
-    }
-    
-    public void setMaxHealth(double maxHP) {
-        this.maxHealth=maxHP;
-    }
+			if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
+				handler.getEntityManager().getPlayer().facing = "Left";
+				State.setState(new FightState(handler, this, this.Area));
 
-    @Override
-    public double getMana() {
-        return mana;
-    }
+			}
+		}
+	}
 
-    @Override
-    public void setMana(double mana) {
-        this.mana=mana;
-    }
+	@Override
+	public Rectangle getCollision() {
+		return questgiver;
+	}
 
-    @Override
-    public double getXp() {
-        return xp;
-    }
+	//GETTERS AND SETTERS FOR FIGHT STATS
 
-    @Override
-    public void setXp(double xp) {
-        this.xp=xp;
-    }
+	double health=100,mana=25,xp=0l,lvl=1,defense=12,str=8,intl=20, mr = 10,cons=20,acc=10,evs=2,initiative=10, maxHealth = 100;
+	String Class = "none",skill = "none";
+	String[] buffs = {},debuffs = {};
 
-    @Override
-    public double getLvl() {
-        return lvl;
-    }
+	@Override
+	public double getMaxHealth() {
+		return maxHealth;
+	}
+	@Override
+	public double getMaxMana() {
+		return 100;
+	}
+	@Override
+	public double getHealth() {
+		return health;
+	}
 
-    @Override
-    public void setLvl(double lvl) {
-        this.lvl=lvl;
-    }
+	@Override
+	public void setHealth(double health) {
+		this.health=health;
+	}
 
-    @Override
-    public double getDefense() {
-        return defense;
-    }
+	public void setMaxHealth(double maxHP) {
+		this.maxHealth=maxHP;
+	}
 
-    @Override
-    public void setDefense(double defense) {
-        this.defense=defense;
-    }
+	@Override
+	public double getMana() {
+		return mana;
+	}
 
-    @Override
-    public double getStr() {
-        return this.str;
-    }
+	@Override
+	public void setMana(double mana) {
+		this.mana=mana;
+	}
 
-    @Override
-    public void setStr(double str) {
-        this.str=str;
-    }
+	@Override
+	public double getXp() {
+		return xp;
+	}
 
-    @Override
-    public double getIntl() {
-        return intl;
-    }
+	@Override
+	public void setXp(double xp) {
+		this.xp=xp;
+	}
 
-    @Override
-    public void setIntl(double intl) {
-        this.intl=intl;
-    }
-    
-    @Override
+	@Override
+	public double getLvl() {
+		return lvl;
+	}
+
+	@Override
+	public void setLvl(double lvl) {
+		this.lvl=lvl;
+	}
+
+	@Override
+	public double getDefense() {
+		return defense;
+	}
+
+	@Override
+	public void setDefense(double defense) {
+		this.defense=defense;
+	}
+
+	@Override
+	public double getStr() {
+		return this.str;
+	}
+
+	@Override
+	public void setStr(double str) {
+		this.str=str;
+	}
+
+	@Override
+	public double getIntl() {
+		return intl;
+	}
+
+	@Override
+	public void setIntl(double intl) {
+		this.intl=intl;
+	}
+
+	@Override
 	public double getMr() {
 		return mr;
 	}
-	
+
 	@Override
 	public void setMr(double mr) {
 		this.mr = mr;	
 	}
 
-    @Override
-    public double getCons() {
-        return cons;
-    }
+	@Override
+	public double getCons() {
+		return cons;
+	}
 
-    @Override
-    public void setCons(double cons) {
-        this.cons=cons;
-    }
+	@Override
+	public void setCons(double cons) {
+		this.cons=cons;
+	}
 
-    @Override
-    public double getAcc() {
-        return this.acc;
-    }
+	@Override
+	public double getAcc() {
+		return this.acc;
+	}
 
-    @Override
-    public void setAcc(double acc) {
-        this.acc=acc;
-    }
+	@Override
+	public void setAcc(double acc) {
+		this.acc=acc;
+	}
 
-    @Override
-    public double getEvs() {
-        return evs;
-    }
+	@Override
+	public double getEvs() {
+		return evs;
+	}
 
-    @Override
-    public void setEvs(double evs) {
-        this.evs=evs;
-    }
+	@Override
+	public void setEvs(double evs) {
+		this.evs=evs;
+	}
 
-    @Override
-    public double getInitiative() {
-        return initiative;
-    }
+	@Override
+	public double getInitiative() {
+		return initiative;
+	}
 
-    @Override
-    public void setInitiative(double initiative) {
-        this.initiative=initiative;
-    }
+	@Override
+	public void setInitiative(double initiative) {
+		this.initiative=initiative;
+	}
 
-    @Override
-    public String getclass() {
-        return Class;
-    }
+	@Override
+	public String getclass() {
+		return Class;
+	}
 
-    @Override
-    public void setClass(String aClass) {
-        this.Class=aClass;
-    }
+	@Override
+	public void setClass(String aClass) {
+		this.Class=aClass;
+	}
 
-    @Override
-    public String getSkill() {
-        return this.skill;
-    }
+	@Override
+	public String getSkill() {
+		return this.skill;
+	}
 
-    @Override
-    public void setSkill(String skill) {
-        this.skill=skill;
-    }
+	@Override
+	public void setSkill(String skill) {
+		this.skill=skill;
+	}
 
-    @Override
-    public String[] getBuffs() {
-        return buffs;
-    }
+	@Override
+	public String[] getBuffs() {
+		return buffs;
+	}
 
-    @Override
-    public void setBuffs(String[] buffs) {
-        this.buffs=buffs;
-    }
+	@Override
+	public void setBuffs(String[] buffs) {
+		this.buffs=buffs;
+	}
 
-    @Override
-    public String[] getDebuffs() {
-        return debuffs;
-    }
+	@Override
+	public String[] getDebuffs() {
+		return debuffs;
+	}
 
-    @Override
-    public void setDebuffs(String[] debuffs) {
-        this.debuffs=debuffs;
-    }
-    
-    public void lvlAdjust() {
-    	if(lvl > 1) {
-	    	health += 10 + 5*(lvl-1);
+	@Override
+	public void setDebuffs(String[] debuffs) {
+		this.debuffs=debuffs;
+	}
+
+	public void lvlAdjust() {
+		if(lvl > 1) {
+			health += 10 + 5*(lvl-1);
 			maxHealth = health;
 			mana += 10 + 5*(lvl-1);
 			if(mana > 100)
@@ -273,7 +272,7 @@ public class QuestGiver extends BaseHostileEntity implements Fighter{
 			if(lvl%4 ==0)
 				evs += (lvl -lvl%4)/4;
 			xp += 20 *(lvl);
-    	}
-    }
+		}
+	}
 
 }
