@@ -37,7 +37,7 @@ public class QuestGiver extends BaseHostileEntity implements Fighter{
     public void tick() {
 
         if(!Player.isinArea) {
-        	//super.tick();
+        	super.tick();
         	meditate.tick();
         }
 
@@ -50,26 +50,26 @@ public class QuestGiver extends BaseHostileEntity implements Fighter{
         Graphics2D g2 = (Graphics2D) g;
 
 
-//        if(handler.getArea().equals(this.Area)) {
-//            if (!Player.checkInWorld) {
-//                questgiver = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
-//                        (int) (handler.getYDisplacement() + getYOffset()), 45, 45);
-//
-//            } else {
-//                questgiver = new Rectangle((int) (handler.getXInWorldDisplacement() + getXOffset()),
-//                        (int) (handler.getYInWorldDisplacement() + getYOffset()), 70, 70);
-//
-//            }
+        if(handler.getArea().equals(this.Area)) {
+            if (!Player.checkInWorld) {
+                questgiver = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
+                        (int) (handler.getYDisplacement() + getYOffset()), 45, 45);
+
+            } else {
+                questgiver = new Rectangle((int) (handler.getXInWorldDisplacement() + getXOffset()),
+                        (int) (handler.getYInWorldDisplacement() + getYOffset()), 70, 70);
+
+            }
 
             g2.setColor(Color.black);
 
             g.drawImage(meditate.getCurrentFrame(),questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
 
-            //if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
-              //  handler.getEntityManager().getPlayer().facing = "Left";
-                //State.setState(new FightState(handler, this, this.Area));
-           // }
-        //}
+            if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
+                handler.getEntityManager().getPlayer().facing = "Left";
+                State.setState(new FightState(handler, this, this.Area));
+            }
+        }
 
 
     }

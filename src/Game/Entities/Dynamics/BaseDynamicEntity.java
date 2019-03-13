@@ -34,7 +34,7 @@ public class BaseDynamicEntity extends BaseEntity {
 	
 	// OTHER FUNCTIONALITIES THAT A DYNAMIC ENTITY SHOULD HAVE?
 
-
+    
 	public void tick(){
 		if(!PEnemyIdle.getCurrentFrame().equals(null)) {
 			PEnemyIdle.tick();

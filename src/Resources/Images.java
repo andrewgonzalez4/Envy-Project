@@ -38,6 +38,7 @@ public class Images {
 
 	public static BufferedImage projectTitle;
 	public static BufferedImage envyTitle;
+	public static SpriteSheet ghostSheet;
 	public static BufferedImage ghost;
 
 
@@ -169,7 +170,10 @@ public class Images {
 			WEnemySheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/W-enemy.png")));
 
 			projectTitle = ImageIO.read(getClass().getResourceAsStream("/Buttons/ProjectWord.png"));
-			ghost = ImageIO.read(getClass().getResourceAsStream("/Sheets/ghost.png"));
+			
+			ghostSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/boo.png")));
+			ghost = ghostSheet.crop(0, 0, 200, 186);
+			
 
 
 			CaveMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/CaveMap.png"));
