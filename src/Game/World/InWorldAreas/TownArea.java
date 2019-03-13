@@ -38,14 +38,8 @@ public class TownArea extends BaseArea {
         playerRect = new Rectangle((int) handler.getWidth() / 2 - 5, (int) (handler.getHeight() / 2) + 300, 70, 70);
 
         this.entityManager = entityManager;
-
-        
-        // 184, 1640
-        this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,184, 1640,"InWorldState","Sergio","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
-        
-
-        //this.entityManager.AddEntity(new LightStatue (handler, 2080, 1770));
-        
+        this.entityManager.AddEntity(handler.newEnemy(Images.questgiver_front,handler,184, 1640,"InWorldState","Sergio","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
+    
         townWalls = new ArrayList<>();
         AddWalls();
 
