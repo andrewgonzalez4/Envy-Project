@@ -19,8 +19,8 @@ import Display.UI.UIManager;
 
 @SuppressWarnings("Duplicates")
 public class FightState extends InWorldState{
-    private UIManager uiManager;
-    private int entityY;
+    protected UIManager uiManager;
+    protected int entityY;
 
     BaseHostileEntity enemy;
     Rectangle enemyRect, playerRect;
@@ -31,32 +31,32 @@ public class FightState extends InWorldState{
     public boolean passing = true;
     public int stringSpeed = 40;
 
-    private int optionSelect, inputCoolDown;
-    private int[] entityInfoX;
+    protected int optionSelect, inputCoolDown;
+    protected int[] entityInfoX;
     Image background;
 
     public int turn=0,numOfEnemies=1; // 0= player ; else is enemy
-    private boolean attacking=false,defense=false,skill=false,endTurn=false,attacked=false,isDefense=false;
+    protected boolean attacking=false,defense=false,skill=false,endTurn=false,attacked=false,isDefense=false;
 
-    private int attackSpeed =40;
+    protected int attackSpeed =40;
 
-    private Animation playerIceSkill;
-    private Animation playerDefenceMode;
-    private Animation playerAttackMode;
-    private Animation enemyFireSkill;
+    protected Animation playerIceSkill;
+    protected Animation playerDefenceMode;
+    protected Animation playerAttackMode;
+    protected Animation enemyFireSkill;
 
-    private boolean Eattacking=false,Edefense=false,Eskill=false,EendTurn=false,Eattacked=false,EisDefense=false,battleOver =false;
+    protected boolean Eattacking=false,Edefense=false,Eskill=false,EendTurn=false,Eattacked=false,EisDefense=false,battleOver =false;
 
-    private int EattackSpeed =40;
-    private String dmg = "";
-    private double lvlUp = 0;
+    protected int EattackSpeed =40;
+    protected String dmg = "";
+    protected double lvlUp = 0;
 
-    private int green= 255,red=95,blue=255,alpha=0;
+    protected int green= 255,red=95,blue=255,alpha=0;
 
-    private String prevState;
+    protected String prevState;
 
-    private BaseHostileEntity inStateEnemy;
-	private long eWait = 0;
+    protected BaseHostileEntity inStateEnemy;
+	protected long eWait = 0;
 
 
     public FightState(Handler handler ,BaseHostileEntity enemy, String prevState) {
@@ -103,7 +103,7 @@ public class FightState extends InWorldState{
 
     }
 
-    private void chooseTurn() {
+    protected void chooseTurn() {
         if(handler.getEntityManager().getPlayer().getInitiative()>=enemy.getInitiative()){
             turn = 0;
         }else{
@@ -273,14 +273,14 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void drawEntities(Graphics2D g2) {
+    protected void drawEntities(Graphics2D g2) {
         //Draws entities
         g2.drawImage(handler.getEntityManager().getPlayer().getIdle(), playerRect.x, playerRect.y, playerRect.width, playerRect.height, null);
         g2.setColor(Color.BLACK);
         g2.drawImage(enemy.getIdle(), enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, null);
     }
 
-    private void drawDebug(Graphics g) {
+    protected void drawDebug(Graphics g) {
         if(GameSetUp.DEBUGMODE){
             g.setFont((new Font("IMPACT", Font.ITALIC, 25)));
             g.drawString("Turn: "+String.valueOf(turn),handler.getWidth()/2,25);
@@ -316,7 +316,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void drawFightBanner(Graphics2D g2,Color color) {
+    protected void drawFightBanner(Graphics2D g2,Color color) {
         //Fight string that appears in beginning
         if(this.isPassing()) {
 
@@ -330,7 +330,7 @@ public class FightState extends InWorldState{
         g2.drawString("FIGHT!", this.fightWordXPos, this.fightWordYPos);
     }
 
-    private void drawCharacterInfo(Graphics2D g2) {
+    protected void drawCharacterInfo(Graphics2D g2) {
         /*
          * used for drawing the info of the player and the Enemy.
          * When the entities have their own health, mp, name, etc.  it will be updated as to reflect the info of the
@@ -398,7 +398,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void drawInfoSquare(Graphics2D g2) {
+    protected void drawInfoSquare(Graphics2D g2) {
 
         g2.setBackground(new Color(61,68,128));
         g2.drawImage(background, 0, 0,handler.getWidth(),handler.getHeight(), null);
@@ -429,7 +429,7 @@ public class FightState extends InWorldState{
     /*
      * Disables player movement.  W and S no longer do anything, A and D move between the options
      */
-    private void PlayerInput() {
+    protected void PlayerInput() {
 
         if(inputCoolDown <= 15){
             inputCoolDown++;
@@ -477,7 +477,7 @@ public class FightState extends InWorldState{
         eWait = System.currentTimeMillis() + 3500;
     }
 
-    private void setUiManager() {
+    protected void setUiManager() {
         uiManager = new UIManager(handler);
 
         //Attack
@@ -524,7 +524,7 @@ public class FightState extends InWorldState{
 
 
     //Sets the background according to the previous state
-    private void backgroundSelect(String prev) {
+    protected void backgroundSelect(String prev) {
 
         if(prev.equals("None"))
             background = Images.battleBackground[1];
@@ -547,7 +547,7 @@ public class FightState extends InWorldState{
 
     }
 
-    private void attack(Graphics g) {
+    protected void attack(Graphics g) {
 
         if(!playerAttackMode.end){
             playerAttackMode.tick();
@@ -620,7 +620,7 @@ public class FightState extends InWorldState{
 
     }
 
-    private void defend(Graphics g) {
+    protected void defend(Graphics g) {
 
         playerDefenceMode.tick();
 
@@ -648,7 +648,7 @@ public class FightState extends InWorldState{
 
     }
 
-    private void callSkill(Graphics g) {
+    protected void callSkill(Graphics g) {
 
         playerIceSkill.tick();
         
@@ -699,7 +699,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void enemyTurn() {  
+    protected void enemyTurn() {  
     	
         if(!Eskill&&!Edefense&&!Eattacking && enemy.getMana()>=25) {
             int choice = new Random().nextInt(5);
@@ -735,7 +735,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void Eattack(Graphics g) {
+    protected void Eattack(Graphics g) {
 
         if(!playerAttackMode.end){
             playerAttackMode.tick();
@@ -795,7 +795,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void Edefend(Graphics g) {
+    protected void Edefend(Graphics g) {
 
         playerDefenceMode.tick();
         g.drawImage(Images.tint(playerDefenceMode.getCurrentFrame(),0,0,2),enemyRect.x-15,enemyRect.y-5,enemyRect.width+10,enemyRect.height+10,null);
@@ -816,7 +816,7 @@ public class FightState extends InWorldState{
         }
     }
 
-    private void EcallSkill(Graphics g) {
+    protected void EcallSkill(Graphics g) {
         enemyFireSkill.tick();
         g.setColor( new Color(Math.max(0,red--), Math.max(0,green--),Math.max(0,blue--)));
         g.drawImage(Images.tint(Images.player_attack,Math.max(0,red--),0,0),playerRect.x,playerRect.y,playerRect.width,playerRect.height,null);

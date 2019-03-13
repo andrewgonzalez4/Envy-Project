@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 
 import Game.GameStates.FightState;
 import Game.GameStates.State;
+import Game.GameStates.TalkState;
 import Main.Handler;
 import Resources.Images;
 import Resources.Animation;
@@ -67,7 +68,7 @@ public class QuestGiver extends BaseHostileEntity implements Fighter{
 
 			if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
 				handler.getEntityManager().getPlayer().facing = "Left";
-				State.setState(new FightState(handler, this, this.Area));
+				State.setState(new TalkState(handler, this, this.Area));
 
 			}
 		}

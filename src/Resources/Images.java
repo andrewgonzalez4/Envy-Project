@@ -102,6 +102,7 @@ public class Images {
 	public static Image ScaledCave;
 	public static Image ScaledArea;
 	public static BufferedImage tree;
+	public static BufferedImage[] TalkingBubble;
 
 	public Images() {
 
@@ -112,6 +113,8 @@ public class Images {
 		Options = new BufferedImage[3];
 		Resume = new BufferedImage[2];
 		Quit = new BufferedImage[2];
+		
+		TalkingBubble = new BufferedImage[0];
 		
 		map = new BufferedImage[4];
 		Scaledmap = new Image[3];
@@ -207,6 +210,7 @@ public class Images {
 			battleBackground[2] = ImageIO.read(getClass().getResourceAsStream("/PixelEffects/README/SArea.png"));
 			battleBackground[3] = ImageIO.read(getClass().getResourceAsStream("/Sheets/caveBackground.png"));
 
+			TalkingBubble[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Speech-Bubble-Download-PNG.png"));
 			Attack[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Attack.png"));
 			Defend[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Defend.png"));
 			Skill[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Skill.png"));
