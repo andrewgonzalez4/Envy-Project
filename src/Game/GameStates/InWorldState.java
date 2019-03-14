@@ -73,7 +73,7 @@ public class InWorldState extends State{
         }else{
             g.drawImage(Images.Loading,0,0,handler.getWidth(),handler.getHeight(),null);
         }
-
+       
     }
 
     public State setArea(BaseArea area){

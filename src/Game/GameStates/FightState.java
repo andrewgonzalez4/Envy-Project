@@ -508,7 +508,7 @@ public class FightState extends InWorldState{
                 && handler.getEntityManager().getPlayer().getSkill() != "None"
                 ){
                     System.out.println("Skill");
-                    //handler.getEntityManager().getPlayer().setSkill("Freeze");
+                    //
                     skill = true;
                 }
                 //else {

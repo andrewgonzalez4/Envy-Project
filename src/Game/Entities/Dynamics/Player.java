@@ -23,8 +23,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	private Rectangle player;
 	private boolean canMove;
 	
-	public boolean questComplete = false;
-	public boolean questInProgress = false;
+	public static boolean questComplete = false;
+	public static boolean questInProgress = false;
 	
 	public static boolean checkInWorld;
 
@@ -201,10 +201,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						PushPlayerBack();
 					}
 					else if (w.getType().equals("Ogre Wall")) {
-						if (questComplete ==false) {
+						if (questComplete == false) {
 							PushPlayerBack();	
 						}
-						else {
+						else{
 							//handler.getWorldManager().
 						}
 						

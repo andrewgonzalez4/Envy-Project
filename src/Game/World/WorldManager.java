@@ -74,6 +74,7 @@ public class WorldManager {
 		g2.setColor(Color.ORANGE);
 		g2.setFont(new Font("AR ESSENCE", Font.PLAIN, 100));
 		g2.drawString(this.getString(), this.xPos,this.yPos);
+		
 
 		if(GameSetUp.DEBUGMODE){
 
@@ -87,7 +88,9 @@ public class WorldManager {
 					g2.setColor(Color.PINK);
 
 				w.render(g2);
+				
 			}
+			
 		}
 	}
 
