@@ -207,13 +207,13 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						PushPlayerBack();
 					}
 					else if (w.getType().equals("Ogre Wall")) {
-						if (enemykilled == false) {
+						if (questComplete == false) {
 							PushPlayerBack();	
 							instr = "Come back with a Skill, puny Human.";
 							
 						}
 						else{
-							instr = "Pass through me human, I'll allow it.";
+							instr = "";
 							//handler.getWorldManager().
 						}
 						
