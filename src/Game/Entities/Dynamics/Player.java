@@ -212,10 +212,10 @@ public class Player extends BaseDynamicEntity implements Fighter {
 							instr = "Come back with a Skill, puny Human.";
 							
 						}
-						else{
-							instr = "Pass through me human, I'll allow it.";
-							
-							//handler.getWorldManager().
+						else {
+
+							instr = "";
+
 						}
 						
 					}
