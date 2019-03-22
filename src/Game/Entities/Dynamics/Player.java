@@ -214,6 +214,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						}
 						else{
 							instr = "Pass through me human, I'll allow it.";
+							
 							//handler.getWorldManager().
 						}
 						
