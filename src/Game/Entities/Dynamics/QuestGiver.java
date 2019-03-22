@@ -131,7 +131,7 @@ public class QuestGiver extends BaseHostileEntity {
 //						words = "Come back after killing Sergio";
 //						
 //					}
-					if ( handler.getEntityManager().getPlayer().questInProgress == true) {
+					if ( handler.getEntityManager().getPlayer().questComplete == true) {
 						words = "Good Job";
 						handler.getEntityManager().getPlayer().setSkill("Freeze");
 					}
