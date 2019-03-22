@@ -36,12 +36,14 @@ public class OgreGuardian extends BaseStaticEntity{
 	@Override
 	public void render(Graphics g) {
 		
-		if(handler.getEntityManager().getPlayer().questComplete = false) {
+		if(handler.getEntityManager().getPlayer().questComplete == false) {
 			g.drawImage(stop.getCurrentFrame(), (int)(handler.getXDisplacement() + xPosition),(int)( handler.getYDisplacement() + yPosition), width, height, null);
 			collision = new Rectangle((int)(handler.getXDisplacement() + xPosition + 35), (int)(handler.getYDisplacement() + yPosition + 50), width/4, height/2);
 		}
 		
 		else {
+			
+			
 			
 		}
 		
