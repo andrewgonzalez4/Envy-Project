@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 
 import Game.GameStates.FightState;
 import Game.GameStates.State;
+import Game.GameStates.TalkState;
+import Main.GameSetUp;
 import Main.Handler;
 import Resources.Images;
 import Resources.Animation;
@@ -17,6 +19,9 @@ import Resources.Animation;
 
 public class QuestGiver extends BaseHostileEntity {
 
+	private Rectangle detector;
+	private boolean chasingPlayer;
+	private static boolean e_pressed =false;
 	Rectangle questgiver;
 	int width, height;
 	Animation meditate;
@@ -38,13 +43,20 @@ public class QuestGiver extends BaseHostileEntity {
 
 	@Override
 	public void tick() {
-
+		
 
 		if(!Player.isinArea) {
-			super.tick();
+			//super.tick();
 			meditate.tick();
+			
+			 if (canMove) {
+				 PlayerDetector();
+				
+			 }
 		}
-
+		
+		
+		
 	}
 
 	@Override
@@ -53,7 +65,9 @@ public class QuestGiver extends BaseHostileEntity {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-
+		
+		
+		
         if(handler.getArea().equals(this.Area)) {
             if (!Player.checkInWorld) {
                 questgiver = new Rectangle((int) (handler.getXDisplacement() + getXOffset()),
@@ -66,30 +80,80 @@ public class QuestGiver extends BaseHostileEntity {
             }
 
 			g2.setColor(Color.black);
-
+			if (GameSetUp.DEBUGMODE) {
+				g2.draw(detector);
+				g2.draw(nextArea);
+			}
 
 			g.drawImage(meditate.getCurrentFrame(),questgiver.x,questgiver.y,questgiver.width,questgiver.height,null);
 			String words = new String();
+			String instr = new String();
+			
+			if (chasingPlayer){	
+				
+				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E) &&
+						 handler.getEntityManager().getPlayer().questInProgress== false) {					
+
+					 handler.getEntityManager().getPlayer().questInProgress = true;
+					 words = "Come back after killing Jovan";
+					 instr = "";
+					 e_pressed = true;
+				}
+				else if (e_pressed == false) {
+					words = "Hello Stranger, will you accept my quest?";
+					instr = "Press E To Accept";
+					
+				}
+				else if ( handler.getEntityManager().getPlayer().questInProgress == true&&
+						handler.getEntityManager().getPlayer().questComplete == false){
+					 words = "Come back after killing Jovan";
+					 instr = "";
+				}
+				else if (handler.getEntityManager().getPlayer().questComplete == true) {
+					words= "Quest Complete. Good Job.";
+					instr= "";
+//					handler.getEntityManager().getPlayer().setSkill("Freeze");
+				}
+				g2.drawString(words,questgiver.x,questgiver.y);
+				g2.drawString(instr,questgiver.x -10,questgiver.y +100);
+			}
 			if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
 				handler.getEntityManager().getPlayer().facing = "Left";
-				//State.setState(new FightState(handler, this, this.Area));
+				
 				 if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {					
-					//State.setState(new FightState(handler, this, this.Area));
-					
-					if (Player.questInProgress = false) {
-						Player.questInProgress = true;
-						System.out.println("Changed");
-						words = "Come back after killing Sergio";
-					}
-					if (Player.questComplete == true) {
+
+					 handler.getEntityManager().getPlayer().questInProgress = true;
+					 words = "Come back after killing Sergio";
+					 g2.drawString(words,questgiver.x,questgiver.y);
+//					if (Player.questInProgress == false) {
+//						Player.questInProgress = true;
+//						System.out.println("Changed");
+//						words = "Come back after killing Sergio";
+//						
+//					}
+					if ( handler.getEntityManager().getPlayer().questInProgress == true) {
+						words = "Good Job";
 						handler.getEntityManager().getPlayer().setSkill("Freeze");
 					}
 				}
-				g.drawString(words,questgiver.x,questgiver.y);
+				
+				
 			}
 		}
 	}
 
+	private void PlayerDetector() {
+
+		detector = this.getCollision();
+
+		detector.setRect(detector.getX() - detector.getWidth() * 4.5, detector.getY() - detector.getHeight() * 4.5,
+				detector.getWidth() * 10, detector.getHeight() * 10);
+
+		chasingPlayer = handler.getEntityManager().getPlayer().getCollision().intersects(detector);
+
+		
+	}
+	
 	@Override
 	public Rectangle getCollision() {
 		return questgiver;

@@ -67,10 +67,17 @@ public class EntityManager {
 		for (BaseEntity e : entities) {
 			if(e instanceof BaseHostileEntity) {
 				if(!((BaseHostileEntity) e).isDead()) e.render(g);
+				else if (((BaseHostileEntity) e).isDead()){
+					if (((BaseHostileEntity) e).name.equals("Jovan")) {
+						handler.getEntityManager().getPlayer().questComplete = true;
+					}
+
+				}
+				
 			}
 			else {
 				e.render(g);
-			}
+							}
 		}
 
 	}

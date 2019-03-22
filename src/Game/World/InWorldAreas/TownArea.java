@@ -43,7 +43,7 @@ public class TownArea extends BaseArea {
         
         // 184, 1640
         this.entityManager.AddEntity(handler.newEnemy(Images.questgiver_front,handler,184, 1640,"InWorldState","Weird Entity","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
-        
+        this.entityManager.AddEntity(new LightStatue (handler, 184, 1640));
         
 
         
@@ -139,6 +139,8 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, 1730, 3900, 280, 100, "End Exit"));							// Exit at End
         townWalls.add(new InWorldWalls(handler, 0, 1800, 100, 280, "Left Exit"));
         townWalls.add(new InWorldWalls(handler, imageWidth - 100, 1800,100, 280, "Right Exit"));
+        //townWalls.add(new InWorldWalls(handler,164, 1640, 100, 120, "Wall"));
+        
 
     }
 

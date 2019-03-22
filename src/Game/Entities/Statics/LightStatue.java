@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import Game.Entities.Dynamics.Player;
+import Game.World.InWorldAreas.TownArea;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -35,8 +36,8 @@ public class LightStatue extends BaseStaticEntity {
 
 	@Override
 	public void render(Graphics g) {
-		if(!Player.isinArea)
-			g.drawImage(light.getCurrentFrame(), (int)(handler.getXInWorldDisplacement() + xPosition),(int)( handler.getYInWorldDisplacement() + yPosition), width, height, null);
+		if(!TownArea.isInTown)
+		g.drawImage(light.getCurrentFrame(), (int)(handler.getXInWorldDisplacement() + xPosition),(int)( handler.getYInWorldDisplacement() + yPosition), width, height, null);
 		collision = new Rectangle((int)(handler.getXDisplacement() + xPosition + 35), (int)(handler.getYDisplacement() + yPosition + 50), width/4, height/2);
 	}
 
