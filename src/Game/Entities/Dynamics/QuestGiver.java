@@ -46,12 +46,10 @@ public class QuestGiver extends BaseHostileEntity {
 		
 
 		if(!Player.isinArea) {
-			//super.tick();
 			meditate.tick();
 			
 			 if (canMove) {
-				 PlayerDetector();
-				
+				 PlayerDetector();			
 			 }
 		}
 		
@@ -99,40 +97,41 @@ public class QuestGiver extends BaseHostileEntity {
 					 instr = "";
 					 e_pressed = true;
 				}
-				else if (e_pressed == false) {
+				if (e_pressed == false) {
 					words = "Hello Stranger, will you accept my quest?";
 					instr = "Press E To Accept";
 					
 				}
 				else if ( handler.getEntityManager().getPlayer().questInProgress == true&&
+						handler.getEntityManager().getPlayer().enemykilled == false &&
 						handler.getEntityManager().getPlayer().questComplete == false){
 					 words = "Come back after killing Jovan";
 					 instr = "";
 				}
+				else if (handler.getEntityManager().getPlayer().enemykilled == true &&
+						handler.getEntityManager().getPlayer().questComplete == false
+						) {					
+					words= "Quest Complete. Good Job.";
+					instr= "";
+					handler.getEntityManager().getPlayer().setSkill("Freeze");
+					handler.getEntityManager().getPlayer().questComplete = true;
+				}
 				else if (handler.getEntityManager().getPlayer().questComplete == true) {
 					words= "Quest Complete. Good Job.";
 					instr= "";
-//					handler.getEntityManager().getPlayer().setSkill("Freeze");
 				}
 				g2.drawString(words,questgiver.x,questgiver.y);
 				g2.drawString(instr,questgiver.x -10,questgiver.y +100);
 			}
+			////
 			if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {
-				handler.getEntityManager().getPlayer().facing = "Left";
-				
+				/////
 				 if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {					
-
+					 
 					 handler.getEntityManager().getPlayer().questInProgress = true;
-					 words = "Come back after killing Sergio";
-					 g2.drawString(words,questgiver.x,questgiver.y);
-//					if (Player.questInProgress == false) {
-//						Player.questInProgress = true;
-//						System.out.println("Changed");
-//						words = "Come back after killing Sergio";
-//						
-//					}
-					if ( handler.getEntityManager().getPlayer().questComplete == true) {
-						words = "Good Job";
+					 /////
+					 if ( handler.getEntityManager().getPlayer().questComplete == true &&
+							 handler.getEntityManager().getPlayer().enemykilled == true) {
 						handler.getEntityManager().getPlayer().setSkill("Freeze");
 					}
 				}

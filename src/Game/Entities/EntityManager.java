@@ -69,7 +69,7 @@ public class EntityManager {
 				if(!((BaseHostileEntity) e).isDead()) e.render(g);
 				else if (((BaseHostileEntity) e).isDead()){
 					if (((BaseHostileEntity) e).name.equals("Jovan")) {
-						handler.getEntityManager().getPlayer().questComplete = true;
+						handler.getEntityManager().getPlayer().enemykilled = true;
 					}
 
 				}

@@ -1,5 +1,6 @@
 package Game.Entities.Dynamics;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -25,6 +26,9 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	
 	public static boolean questComplete = false;
 	public static boolean questInProgress = false;
+	public static boolean enemykilled = false;
+	
+	public String instr = new String("");
 	
 	public static boolean checkInWorld;
 
@@ -105,7 +109,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 				(int) xPosition, (int) yPosition, currentWidth, currentHeight, null);
 
 		player = new Rectangle((int) xPosition, (int) yPosition+(currentHeight/2)+5, currentWidth-3, currentHeight/2);
-
+		g2.setFont(new Font("TimesRoman", Font.PLAIN, 14)); 
+		g2.drawString(instr,(int)xPosition -10,(int)yPosition +100);
 		if (GameSetUp.DEBUGMODE) {
 			g2.draw(nextArea);
 			g2.draw(getCollision());
@@ -193,6 +198,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	private void CheckForWalls() {
 
 		if (!checkInWorld) {
+			instr = "";
 			for (Walls w : handler.getWorldManager().getWalls()) {
 
 				if (nextArea.intersects(w)) {
@@ -201,10 +207,13 @@ public class Player extends BaseDynamicEntity implements Fighter {
 						PushPlayerBack();
 					}
 					else if (w.getType().equals("Ogre Wall")) {
-						if (questComplete == false) {
+						if (enemykilled == false) {
 							PushPlayerBack();	
+							instr = "Come back with a Skill, puny Human.";
+							
 						}
 						else{
+							instr = "Pass through me human, I'll allow it.";
 							//handler.getWorldManager().
 						}
 						
@@ -228,7 +237,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 	                        handler.getGame().getMusicHandler().set_changeMusic("res/music/Cave.mp3");
 	                        handler.getGame().getMusicHandler().play();
 	                        handler.getGame().getMusicHandler().setVolume(0.4);
-							
+							instr ="";
 							State.setState(handler.getGame().inWorldState.setArea(InWorldState.caveArea));
 						}
 

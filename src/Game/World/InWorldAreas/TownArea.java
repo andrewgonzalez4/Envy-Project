@@ -105,16 +105,7 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, imageWidth , 0, 10, imageHeight, "Wall"));					// Right Border
 
 
-        //townWalls.add(new InWorldWalls(handler, 200, 3400, 400, 400, "Wall"));									// Left side Pond
-        //townWalls.add(new InWorldWalls(handler, 500, 3075, 125, 100, "Wall"));									// Left side Water Hole
-
-//        townWalls.add(new InWorldWalls(handler, 2440, 3355, 1, 500, "Wall"));									// Water Lake
-//        townWalls.add(new InWorldWalls(handler, 1985, 3190, 500, 140, "Wall"));									//
-//        townWalls.add(new InWorldWalls(handler, 1665, 3030, 500, 140, "Wall"));									//
-//        townWalls.add(new InWorldWalls(handler, 1495, 2285, 1040, 700, "Wall"));								//
-//        townWalls.add(new InWorldWalls(handler, 1595, 2985, 100, 100, "Wall"));									//
-//        townWalls.add(new InWorldWalls(handler, 2520, 2750, 800, 1, "Wall"));									//
-//        townWalls.add(new InWorldWalls(handler, 3258, 2608, 400, 400, "Wall"));									//
+ 
 
         townWalls.add(new InWorldWalls(handler, 216, 50, 1005, 1040, "Wall"));									// Lava Lake
  //       townWalls.add(new InWorldWalls(handler, 1246, 518, 300, 415, "Wall"));									//
@@ -124,14 +115,7 @@ public class TownArea extends BaseArea {
 
 
         townWalls.add(new InWorldWalls(handler, 176, 140, 455, 345, "Wall"));									// TopLeft Side Wall with torch
-       // townWalls.add(new InWorldWalls(handler, 661, 205, 120, 100, "Wall"));									// Hole next to TopLeft Side wall with torch
-
-
-//        townWalls.add(new InWorldWalls(handler, 2066, 2050, 180, 125, "Wall"));                                  //Statue
-//        townWalls.add(new InWorldWalls(handler, 1940, 2130, 100, 100, "Wall"));									// Pond next to Statue
-//        townWalls.add(new InWorldWalls(handler, 3380, 510, 120, 100, "Wall"));									// Hole next to Exit
-//        townWalls.add(new InWorldWalls(handler, 2744, 140, 200, 300, "Wall"));									// Left wall relative to Exit
-//        townWalls.add(new InWorldWalls(handler, 3288, 140, 200, 300, "Wall"));									// Right wall relative to Exit
+       
 
         townWalls.add(new InWorldWalls(handler, /*imageWidth/3*/ 1500, imageHeight, 300, 50, "Wall"));					// Entrance
 
@@ -139,7 +123,7 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, 1730, 3900, 280, 100, "End Exit"));							// Exit at End
         townWalls.add(new InWorldWalls(handler, 0, 1800, 100, 280, "Left Exit"));
         townWalls.add(new InWorldWalls(handler, imageWidth - 100, 1800,100, 280, "Right Exit"));
-        //townWalls.add(new InWorldWalls(handler,164, 1640, 100, 120, "Wall"));
+        townWalls.add(new InWorldWalls(handler,164, 1640, 100, 120, "Wall"));
         
 
     }
