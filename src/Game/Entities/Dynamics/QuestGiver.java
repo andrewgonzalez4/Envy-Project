@@ -22,6 +22,7 @@ public class QuestGiver extends BaseHostileEntity {
 	private Rectangle detector;
 	private boolean chasingPlayer;
 	private static boolean e_pressed =false;
+	private static boolean final_e_pressed = false;
 	Rectangle questgiver;
 	int width, height;
 	Animation meditate;
@@ -79,6 +80,7 @@ public class QuestGiver extends BaseHostileEntity {
 
 			g2.setColor(Color.black);
 			if (GameSetUp.DEBUGMODE) {
+				g2.setColor(Color.blue);
 				g2.draw(detector);
 				g2.draw(nextArea);
 			}
@@ -99,7 +101,7 @@ public class QuestGiver extends BaseHostileEntity {
 				}
 				if (e_pressed == false) {
 					words = "Hello Stranger, will you accept my quest?";
-					instr = "Press E To Accept";
+					instr = "Press E To Accept Quest";
 					
 				}
 				else if ( handler.getEntityManager().getPlayer().questInProgress == true&&
@@ -111,17 +113,27 @@ public class QuestGiver extends BaseHostileEntity {
 				else if (handler.getEntityManager().getPlayer().enemykilled == true &&
 						handler.getEntityManager().getPlayer().questComplete == false
 						) {					
+					words= "Quest Complete. Accept my gift in gratitude.";
+					instr= "Press E To Accept Skill";
+					if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
+						handler.getEntityManager().getPlayer().questComplete = true;
+						final_e_pressed = true;
+						words= "Quest Complete. Good Job.";
+						instr= "YOU CAN NOW USE SKILL";
+					}
+					
+				}
+				else if (handler.getEntityManager().getPlayer().questComplete == true 
+						&& final_e_pressed == true) {
 					words= "Quest Complete. Good Job.";
-					instr= "";
+					instr= "YOU CAN NOW USE SKILL";
 					handler.getEntityManager().getPlayer().setSkill("Freeze");
-					handler.getEntityManager().getPlayer().questComplete = true;
 				}
-				else if (handler.getEntityManager().getPlayer().questComplete == true) {
-					words= "Quest Complete. Good Job.";
-					instr= "";
-				}
-				g2.drawString(words,questgiver.x,questgiver.y);
-				g2.drawString(instr,questgiver.x -10,questgiver.y +100);
+				g2.setColor(Color.white);
+				g2.drawString(words,questgiver.x - 20,questgiver.y);
+				g2.setColor(Color.red);
+				g2.setFont(new Font("AR ESSENCE", Font.PLAIN, 20));
+				g2.drawString(instr,questgiver.x -40,questgiver.y +140);
 			}
 			////
 			if (questgiver.intersects(handler.getEntityManager().getPlayer().getCollision())) {

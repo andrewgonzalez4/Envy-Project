@@ -98,10 +98,12 @@ public class Images {
 
 	public static BufferedImage CaveMap;
 	public static BufferedImage TownMap;
+	public static BufferedImage New_TownMap;
 	public static BufferedImage Loading;
 	public static Image ScaledTown;
 	public static Image ScaledCave;
 	public static Image ScaledArea;
+	public static Image ScaledNw_Town;
 	public static BufferedImage tree;
 	public static BufferedImage house;
 	public static BufferedImage[] TalkingBubble;
@@ -183,6 +185,7 @@ public class Images {
 
 			CaveMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/CaveMap.png"));
 			TownMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/town.png"));
+			New_TownMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/new_town.png"));
 			tree = ImageIO.read(getClass().getResourceAsStream("/Sheets/Tree.png"));
 			title = ImageIO.read(getClass().getResourceAsStream("/Sheets/menuImage.png"));
 			title2 = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
@@ -767,6 +770,7 @@ public class Images {
 		
 		ScaledCave = Images.CaveMap.getScaledInstance(3680, 4000, Image.SCALE_SMOOTH); // 368x400 pixel image
 		ScaledTown = Images.TownMap.getScaledInstance(3680, 4000, Image.SCALE_SMOOTH);
+		ScaledNw_Town = Images.New_TownMap.getScaledInstance(3443, 1350, Image.SCALE_SMOOTH);
 		
 		/*
 		ScaledOgre_stop[0] = Images.ogre_front_stop[0].getScaledInstance(13, 22,Image.SCALE_DEFAULT);
