@@ -42,8 +42,7 @@ public class TownArea extends BaseArea {
 
         
         // 184, 1640
-        this.entityManager.AddEntity(handler.newEnemy(Images.questgiver_front,handler,184, 1640,"InWorldState","Weird Entity","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
-        this.entityManager.AddEntity(new LightStatue (handler, 184, 1640));
+        this.entityManager.AddEntity(handler.newEnemy(Images.questgiver_front,handler,464, 1240,"InWorldState","Weird Entity","Town","QuestGiver",150,25,80,1,8,12,20,10,20,10,1,10,"None","Thunder",null,null)); //lvl 2 difficulty
         
 
         
@@ -102,7 +101,7 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, 0, imageHeight, imageWidth, 50, "Wall"));					// Bottom LeftBorder (Left side relative to Entrance)
 //        townWalls.add(new InWorldWalls(handler, imageWidth/2-350, imageHeight-100, imageWidth/4, 50, "Wall"));	// Bottom RightBorder (Right side relative to Entrance)
         townWalls.add(new InWorldWalls(handler, 0, 0, imageWidth, 10, "Wall"));								//
-        townWalls.add(new InWorldWalls(handler, imageWidth , 0, 10, imageHeight, "Wall"));					// Right Border
+        townWalls.add(new InWorldWalls(handler, imageWidth , -100, 10, imageHeight, "Wall"));					// Right Border
 
 
  
@@ -123,7 +122,7 @@ public class TownArea extends BaseArea {
         townWalls.add(new InWorldWalls(handler, 1730, 3900, 280, 100, "End Exit"));							// Exit at End
         townWalls.add(new InWorldWalls(handler, 0, 1800, 100, 280, "Left Exit"));
         townWalls.add(new InWorldWalls(handler, imageWidth - 100, 1800,100, 280, "Right Exit"));
-        townWalls.add(new InWorldWalls(handler,164, 1640, 100, 120, "Wall"));
+        townWalls.add(new InWorldWalls(handler,444, 1240, 100, 120, "Wall"));//x +40, y = -200
         
 
     }

@@ -103,6 +103,7 @@ public class Images {
 	public static Image ScaledCave;
 	public static Image ScaledArea;
 	public static BufferedImage tree;
+	public static BufferedImage house;
 	public static BufferedImage[] TalkingBubble;
 
 	public Images() {
@@ -154,6 +155,7 @@ public class Images {
 
 		smokeHouse = new BufferedImage[7];
 		lightStatue = new BufferedImage[10];
+		
 
 		try {
 			
@@ -190,6 +192,8 @@ public class Images {
 			titleImage = ImageIO.read(getClass().getResourceAsStream("/Sheets/Main3.png"));
 			Stats = ImageIO.read(getClass().getResourceAsStream("/Sheets/Cartel Nota.png"));
 			QST = ImageIO.read(getClass().getResourceAsStream("/Sheets/QST.png")); //Things sometimes just dont fit
+			
+			
 
 			Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
 			Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeButton3.png"));
