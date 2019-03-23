@@ -109,8 +109,14 @@ public class Player extends BaseDynamicEntity implements Fighter {
 				(int) xPosition, (int) yPosition, currentWidth, currentHeight, null);
 
 		player = new Rectangle((int) xPosition, (int) yPosition+(currentHeight/2)+5, currentWidth-3, currentHeight/2);
-		g2.setFont(new Font("TimesRoman", Font.BOLD, 20)); 
-		g2.drawString(instr,(int)xPosition -10,(int)yPosition +100);
+		g2.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		if (TownArea.isInTown) {
+			g2.drawString(instr,(int)xPosition -10,(int)yPosition +200);
+		}
+		else {
+			g2.drawString(instr,(int)xPosition -10,(int)yPosition +100);
+		}
+		
 		if (GameSetUp.DEBUGMODE) {
 			g2.draw(nextArea);
 			g2.draw(getCollision());
@@ -300,6 +306,8 @@ public class Player extends BaseDynamicEntity implements Fighter {
 								handler.setXDisplacement(InWorldState.caveArea.oldPlayerXCoord);// Sets the player x/y
 								handler.setYDisplacement(InWorldState.caveArea.oldPlayerYCoord);// outside theCave
 							}
+							
+							
 	
 							GameSetUp.LOADING = true;
 							handler.setArea("None");
@@ -319,10 +327,19 @@ public class Player extends BaseDynamicEntity implements Fighter {
 			}
 			
 			else if (TownArea.isInTown) {
+				instr ="";
 				for (InWorldWalls iw : TownArea.townWalls) {
 					if (nextArea.intersects(iw)) {
 						if (iw.getType().equals("Wall"))
 							PushPlayerBack();
+						else if (iw.getType().equals("Vendor")) {
+							instr = "Hello!, We're still out of business :{";
+							PushPlayerBack();
+						}
+						else if (iw.getType().equals("Old Man")) {
+							instr = "Hello! Look at mah flowez";
+							PushPlayerBack();
+						}
 						else {
 
 							if (iw.getType().equals("Start Exit") /*|| iw.getType().equals("End Exit")*/) {
@@ -349,6 +366,7 @@ public class Player extends BaseDynamicEntity implements Fighter {
 								// outside the
 								handler.setYDisplacement(handler.getYDisplacement() );
 							}
+							
 							GameSetUp.LOADING = true;
 							handler.setArea("None");
 							

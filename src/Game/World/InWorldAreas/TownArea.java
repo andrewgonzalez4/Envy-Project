@@ -124,10 +124,20 @@ public class TownArea extends BaseArea {
 
         townWalls.add(new InWorldWalls(handler,195, 895, 125, 110, "Wall"));//Chest under house
         
-        townWalls.add(new InWorldWalls(handler,1105, 750, 410, 350, "Wall"));//Vendor
+        townWalls.add(new InWorldWalls(handler,1105, 750, 410, 350, "Vendor"));//Vendor
         
         townWalls.add(new InWorldWalls(handler,1705, 865, 410, 200, "Wall"));//Pond
-        townWalls.add(new InWorldWalls(handler,1925, 795, 410, 600, "Wall"));//Tree
+        townWalls.add(new InWorldWalls(handler,1925, 795, 410, 600, "Wall"));//Tree1
+        
+        townWalls.add(new InWorldWalls(handler,1360, 100, 120, 130, "Wall"));//Barrels
+        townWalls.add(new InWorldWalls(handler,1500, 200, 120, 175, "Old Man"));//Old Man
+        townWalls.add(new InWorldWalls(handler,1640, 100, 490, 410, "Wall"));//Garden
+        
+        townWalls.add(new InWorldWalls(handler,imageWidth - 400, -200, 410, 600, "Wall"));//Tree2
+        
+        townWalls.add(new InWorldWalls(handler,2560, 470, 600, 60, "Wall"));//Bridge Lowerhandle
+        townWalls.add(new InWorldWalls(handler,2670, 770, 410, 30, "Wall"));//Bridge Lowerhandle
+        townWalls.add(new InWorldWalls(handler,2730, 845, 800, 600, "Wall"));//Lake
     }
 
     @Override
