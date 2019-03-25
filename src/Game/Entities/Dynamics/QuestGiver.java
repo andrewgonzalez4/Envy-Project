@@ -81,7 +81,6 @@ public class QuestGiver extends BaseHostileEntity {
 			g2.setColor(Color.black);
 			if (GameSetUp.DEBUGMODE) {
 				g2.setColor(Color.blue);
-				g2.draw(detector);
 				g2.draw(nextArea);
 			}
 
