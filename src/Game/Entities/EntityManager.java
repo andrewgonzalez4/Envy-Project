@@ -71,7 +71,6 @@ public class EntityManager {
 					if (((BaseHostileEntity) e).name.equals("Jovan")) {
 						handler.getEntityManager().getPlayer().enemykilled = true;
 					}
-
 				}
 				
 			}
