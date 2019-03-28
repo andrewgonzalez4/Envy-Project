@@ -35,7 +35,7 @@ public class WorldManager {
 		this.yPos = this.handler.getHeight() - 100;
 
 		rectangle = new Rectangle();
-		circle = handler.getGame().getMouseManager().new Circle(5627,380, this.handler);
+		circle = handler.getGame().getMouseManager().new Circle(5627,380, this.handler);//5627,380,
 		this.entityManager.AddEntity(new Tree(handler, 600, 600));
 		this.entityManager.AddEntity(new SmokeHouse(handler, 1153, 335));
 		this.entityManager.AddEntity(new OgreGuardian(handler, 1655, 20));
@@ -44,7 +44,7 @@ public class WorldManager {
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,500, 800,"MapState","Jovan","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,1400, 600,"MapState","Common Rat","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
 		this.entityManager.AddEntity(handler.newEnemy(Images.PEnemyIdle,handler,2400, -200,"MapState","Common Rat","None","EnemyOne",100,25,40,1,8,12,20,10,20,10,1,5,"None","Fire",null,null)); // lvl 0 dificulty
-		
+
 		this.entityManager.AddEntity(circle);
 
 		AddWalls();
@@ -141,8 +141,7 @@ public class WorldManager {
 		worldWalls.add(new Walls(handler, 1960, -150, 120, 100, "Wall"));
 
 		worldWalls.add(new Walls(handler, 1662, 55, 50, 50, "Door Cave"));
-		worldWalls.add(new Walls(handler, (int) circle.getXOffset(),(int) 
-				circle.getYOffset(), 20, 20, "Door S"));	
+		//worldWalls.add(new Walls(handler,  600, 600, 20, 20, "Door S"));	
 
 		///Left Mountains
 		worldWalls.add(new Walls(handler, 700, 180, 140, 200, "Wall"));

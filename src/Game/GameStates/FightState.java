@@ -170,6 +170,9 @@ public class FightState extends InWorldState{
 	@Override
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
+		if (enemy.name.equals("Boss")) {
+			//enemyRect.width = -enemyRect.width; 
+		}
 
 		drawInfoSquare(g2);
 
@@ -280,6 +283,7 @@ public class FightState extends InWorldState{
 		//Draws entities
 		g2.drawImage(handler.getEntityManager().getPlayer().getIdle(), playerRect.x, playerRect.y, playerRect.width, playerRect.height, null);
 		g2.setColor(Color.BLACK);
+		
 		g2.drawImage(enemy.getIdle(), enemyRect.x, enemyRect.y, enemyRect.width, enemyRect.height, null);
 	}
 

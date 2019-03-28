@@ -40,6 +40,7 @@ public class Images {
 	public static BufferedImage envyTitle;
 	public static SpriteSheet ghostSheet;
 	public static BufferedImage ghost;
+	
 
 
 	public static SpriteSheet playerSheet;
@@ -81,6 +82,10 @@ public class Images {
 	public static BufferedImage[] EnemyS;
 	public static BufferedImage[] SSkill;
 	public static BufferedImage[] aura;
+	
+	public static SpriteSheet minotaurSheet;
+	public static BufferedImage[] minotaur;
+	public static BufferedImage[] sminotaur;
 
 	public static SpriteSheet iceSkillSheet;
 	public static SpriteSheet fireSkillSheet;
@@ -154,6 +159,9 @@ public class Images {
 		SSkill = new BufferedImage[23];
 		aura = new BufferedImage[4];
 		SItem = new BufferedImage[16];
+		
+		minotaur = new BufferedImage[5];
+		sminotaur = new BufferedImage[9];
 
 		smokeHouse = new BufferedImage[7];
 		lightStatue = new BufferedImage[10];
@@ -181,7 +189,7 @@ public class Images {
 			ghostSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/boo.png")));
 			ghost = ghostSheet.crop(0, 0, 200, 186);
 			
-
+			
 
 			CaveMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/CaveMap.png"));
 			TownMap = ImageIO.read(getClass().getResourceAsStream("/Worlds/town.png"));
@@ -254,6 +262,25 @@ public class Images {
 			PEnemyIdle[5] = PEnemySheet.crop(192, 0, 37, 40);
 			PEnemyIdle[6] = PEnemySheet.crop(233, 0, 37, 40);
 
+			minotaurSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/minotaur.png")));
+			
+			minotaur[0] = minotaurSheet.crop(28, 23, 52, 41);
+			minotaur[1] = minotaurSheet.crop(124, 22, 52, 42);
+			minotaur[2] = minotaurSheet.crop(220, 22, 52, 42);
+			minotaur[3] = minotaurSheet.crop(316, 23, 52, 41);
+			minotaur[4] = minotaurSheet.crop(412, 23, 52, 41);
+			
+			sminotaur[0] = minotaurSheet.crop(5, 307, 56, 45);
+			sminotaur[1] = minotaurSheet.crop(114, 293, 69, 65);
+			sminotaur[2] = minotaurSheet.crop(208, 293, 69, 65);
+			sminotaur[3] = minotaurSheet.crop(304, 293, 69, 65);
+			sminotaur[4] = minotaurSheet.crop(412, 311, 55, 46);
+			sminotaur[5] = minotaurSheet.crop(508, 311, 55, 46);
+			sminotaur[6] = minotaurSheet.crop(604, 311, 49, 46);
+			sminotaur[7] = minotaurSheet.crop(700, 311, 48, 41);
+			sminotaur[8] = minotaurSheet.crop(796, 310, 52, 42);
+			
+			
 			questgiverSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/darkmale.png")));
 			
 			questgiver_front[0] = questgiverSheet.crop(15, 142, 34, 48);
